@@ -2,7 +2,7 @@ import streamlit as st
 import openai
 import os
 
-openai.api_key = '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'
+openai.api_key = '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'
 
 def get_completion(prompt, model="gpt-3.5-turbo"):
     messages = [{"role": "user", "content": prompt}]
