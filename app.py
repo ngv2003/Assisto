@@ -2,7 +2,7 @@ import streamlit as st
 import openai
 import os
 
-openai.api_key = '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'
+openai.api_key = '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'
 
 def get_completion(prompt, model="gpt-3.5-turbo"):
     messages = [{"role": "user", "content": prompt}]
@@ -39,6 +39,6 @@ if text != None and text != "":
     jsonResponse = get_completion(jsonFile)
 
     patientData.append(jsonResponse)
-    st.markdown(jsonResponse)
+    st.markdown(patientData)
 else:
     st.markdown("Please input your issue based on the format")
