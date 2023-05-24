@@ -4,6 +4,10 @@ import os
 
 openai.api_key = st.secrets["openai_api_key"]
 st.set_page_config(layout="wide")
+st.markdown(""" <style>
+#MainMenu {visibility: hidden;}
+footer {visibility: hidden;}
+</style> """, unsafe_allow_html=True)
 
 
 with st.container():
@@ -22,7 +26,6 @@ def get_completion(prompt, model="gpt-3.5-turbo"):
     return response.choices[0].message["content"]
 
 patientData = []
-
 
 with st.container():
     col1, col2 = st.columns(2)
