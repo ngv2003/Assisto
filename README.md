@@ -6,4 +6,4 @@ An application that uses **generative AI** to help doctors make fast and accurat
 
 ## Check it out at: 
 
-https://mysticvapour-assisto-app-0m8esq.streamlit.app/
+https://a-ssisto.streamlit.app/
