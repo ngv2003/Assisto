@@ -3,6 +3,14 @@ import openai
 import os
 
 openai.api_key = st.secrets["openai_api_key"]
+st.set_page_config(layout="wide")
+
+
+with st.container():
+    st.title("Welcome to Assisto!")
+    st.header("An application that uses **generative AI** to help doctors make fast and accurate diagnosis")
+
+st.divider()
 
 def get_completion(prompt, model="gpt-3.5-turbo"):
     messages = [{"role": "user", "content": prompt}]
@@ -16,29 +24,44 @@ def get_completion(prompt, model="gpt-3.5-turbo"):
 patientData = []
 
 
-st.title("Welcome to Assisto")
-st.markdown("An application that uses **generative AI** to help doctors make fast and accurate diagnosis")
-st.markdown("Please state your problem as: <Name> <Age> <Gender> : <Issue>")
-text = st.text_input("Enter Prompt")
+with st.container():
+    col1, col2 = st.columns(2)
+    with col1:
+        st.subheader("Enter your prompt based on:")
+        st.markdown(f"""
+            1. Please describe your :red[primary symptoms] in detail, including any pain, discomfort, or abnormalities you are experiencing. \n
+            2. Are there any :red[secondary symptoms or accompanying factors] that you have noticed? If so, please provide relevant information. \n
+            3. Can you specify the :red[location, intensity, and duration] of your symptoms? Are there any triggers or relieving factors? \n
+            4. Have you experienced similar symptoms in the past? If yes, please :red[provide details of previous occurrences and any treatments pursued]. \n
+            5. Do you have any :red[pre-existing medical conditions], allergies, or take any medications regularly? If so, please list them. \n
+            6. Have there been any :red[recent lifestyle changes], such as changes in diet, exercise, or exposure to new environments? \n
+            7. Have you had any :red[recent injuries, accidents, or surgeries]? \n
+            8. Is there :red[any other relevant information] you would like to share? \n
+        """)
 
-if text != None and text != "":
-    prompt = f"""
-    You are an assistant medical diagnosing agent. You take in medical symptoms input that has been provided within triple backticks. You must give suggestions as to any best practices, or tests to be taken, or a predictive diagnosis based on the symptoms. If you're unsure, do not suggest false information, simply say - Doctor's diagnosis required.
-    If the prompt provided is not medical based, then simply say: Hi I am Assisto and I am a Medical Assistant, please provide medical details on your issue.
-    If all the data (Name, Age, Gender, Symptoms) isn't provided, then please display: All data not provided, please reinput issue.
-    ```{text}```
-    """
+    with col2:
+        st.subheader("Enter issue:")
+        text = st.text_area("", height = 60)
 
-    st.markdown("Diagnosis:")
-    st.markdown(get_completion(prompt))
+    if text != None and text != "":
+        prompt = f"""
+        Given the provided symptoms and medical history enclosed within the triple backticks, please provide a comprehensive and data-driven diagnosis for the patient. Consider all relevant factors, such as the reported symptoms, duration, severity, associated conditions, and any additional information provided. Please ensure the diagnosis is accurate, reliable, and backed by medical expertise. Provide a detailed explanation of the diagnosis, including potential causes or conditions that could explain the symptoms. Include any relevant advice or recommendations for further evaluation, tests, or consultations. Remember, while this AI-based diagnosis is meant to assist, it should not replace the expertise and judgment of a qualified healthcare professional. Encourage seeking professional medical advice for a definitive diagnosis and appropriate treatment.
+        ```{text}```
+        """
+        with col2:
+            st.markdown("Diagnosis: (Please wait for 20-30 seconds)")
+            output = get_completion(prompt)
+            st.markdown(output)
 
-    jsonFile = f"""
-    Create a JSON File with appropriate keys: Name, Age, Gender and Symptoms based on the data provided within the triple backticks. The symptom keywords must not exceed 3 words.
-    ```{text}```
-    """
-    jsonResponse = get_completion(jsonFile)
+        jsonFile = f"""
+        Create a JSON File with appropriate keys: Name, Age, Gender based on the data provided within the triple backticks, Symptoms, suggested steps to be taken and severity of the case (out of 10) based on the data provided within the triple exclamation marks. The symptom keywords and suggestion keywords must not exceed 3 words. The severity must be a number between 1 and 10.
+        ```{text}``` !!!{output}!!!
+        """
 
-    patientData.append(jsonResponse)
-    st.markdown(patientData)
-else:
-    st.markdown("Please input your issue based on the format")
+        with col2:
+            jsonResponse = get_completion(jsonFile)
+            patientData.append(jsonResponse)
+            st.code(jsonResponse)
+    else:
+        with col2:
+            st.markdown("Please input your issue based on the format: **Name Age Gender and Relevant Information**")
