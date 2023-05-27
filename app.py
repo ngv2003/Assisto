@@ -104,11 +104,11 @@ with st.container():
         st.subheader("JSON Output - To be fed to healthcare management system")
         st.code(dictVal)
 
-        
-        if int(dictVal[-3]) >= 8:
-            st.subheader(":red_circle: :red[You have an emergency condition, hospital has been intimated, visit immediately!]")
-        elif int(dictVal[-3]) == 7:
-            st.subheader(":warning: :yellow[You should visit the hospital as soon as possible] ")
+        if isinstance(dictVal[-3], int):
+            if int(dictVal[-3]) >= 8:
+                st.subheader(":red_circle: :red[You have an emergency condition, hospital has been intimated, visit immediately!]")
+            elif int(dictVal[-3]) == 7:
+                st.subheader(":warning: :yellow[You should visit the hospital as soon as possible] ")
             
     
     else:
