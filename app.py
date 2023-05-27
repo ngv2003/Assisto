@@ -90,7 +90,7 @@ with st.container():
         st.subheader("Your Diagnosis will appear below:")
         output = get_completion(prompt)
         
-        with st.expander("Your Diagnosis:"):
+        with st.expander("Your Diagnosis:", expanded=True):
             st.markdown(output)
 
         PythonList = f"""
