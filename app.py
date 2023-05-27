@@ -13,7 +13,7 @@ patientData = {12344: {'name': 'John', 'age': '27', 'gender': 'Male', 'medical h
 
 with st.container():
     st.title("Welcome to Assisto! :female-doctor:")
-    st.header("Your Personal Health Assistant for Symptom Solutions and Expert Recommendations!")
+    st.header("Simplifying Your Health Journey, Assessing Symptoms and Suggesting Your Next Steps!")
 
 st.divider()
 
