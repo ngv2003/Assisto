@@ -1,5 +1,5 @@
 # Assisto Symptom Checker
-## Presented at GenAI Hackathon by MultiplyVentures and Jovian by Advay Choudhury and Abhishek Ghosh
+## Presented at GenAI Hackathon by MultiplyVentures and Jovian by Advay Choudhury and Abhishek Ghosh (Top 10 Nominee)
  
 ## Welcome to Assisto
 
@@ -8,6 +8,10 @@ Where individuals experiencing a medical condition can submit their symptoms to 
 ## Check it out at: 
 
 https://a-ssisto.streamlit.app/
+
+Project pitch: https://drive.google.com/file/d/1K5cnVFY4L8nOJJY5fD0X5LW7ASo7Ln-W/view
+
+Project presentation: https://docs.google.com/presentation/d/1gWqLUvje0w3RT2weBxC4NO-PJxbjhRmoNHhwUNIXN7E/edit#slide=id.g24b5effc276_0_82
 
 ## Problem Statement
 
