@@ -5,7 +5,6 @@ import os
 openai.api_key = st.secrets["openai_api_key"]
 st.set_page_config(page_title="Assisto", layout="centered")
 st.markdown(""" <style>
-#MainMenu {visibility: hidden;}
 footer {visibility: hidden;}
 </style> """, unsafe_allow_html=True)
 
