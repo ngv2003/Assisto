@@ -131,9 +131,10 @@ with st.container():
             st.markdown(summary)
             linktext = summary.replace(' ', '%20')
             url = f"""https://wa.me/?text={linktext}"""
+            baseurl = "#"
         if output != None and output != "":
             st.markdown(f'''
-            <a href="{url}"><button style="background-color:#075E54; color:#fff">Share with WhatsApp</button></a>
+            <a href="{baseurl}"><button style="background-color:#075E54; color:#fff">Share with WhatsApp</button></a>
             ''',
             unsafe_allow_html=True)
     
