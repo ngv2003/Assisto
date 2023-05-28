@@ -94,7 +94,7 @@ with st.container():
 
         PythonList = f"""
         Create a Python Dictionary with appropriate keys: Name, Age, Gender based on the data provided within the triple backticks, Symptoms, Diagnosis, suggested steps to be taken and severity of the case (between 1 to 10) based on the data provided within the triple exclamation marks. The symptom keywords and suggestion keywords must not exceed 3 words. The severity must be a number between 1 and 10.
-        ```{compiledData}``` !!!{output}!!!
+        ```{compiledData + name + age + gender}``` !!!{output}!!!
         """
 
         
