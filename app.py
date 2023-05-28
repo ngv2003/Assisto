@@ -130,14 +130,14 @@ with st.container():
             Extract the diagnosis key specifically from {dictVal}. Explain the diagnosis you have extracted such that a child can understand. Do not exceed 80 words. Do not explain any other key from dictVal, especially the severity.
             """)
             st.markdown(summary)
-            linktext = summary.replace(' ', '%20')
+            linktext = summary.replace(' ', '%20').replace('"', '-').replace("'", " ")
             url = f"""https://wa.me/?text={linktext}"""
             baseurl = "#"
         
         #Preparing URL for whatsapp share (If actual text does not work, sample URL has been displayed)
         if output != None and output != "":
             st.markdown(f'''
-            <a href="{baseurl}"><button style="background-color:#075E54; color:#fff">Share with WhatsApp</button></a>
+            <a href="{url}"><button style="background-color:#075E54; color:#fff">Share with WhatsApp</button></a>
             ''',
             unsafe_allow_html=True)
     
