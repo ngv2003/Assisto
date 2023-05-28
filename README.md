@@ -1,5 +1,5 @@
 # Assisto Symptom Checker
-## Presented at GenAI Hackathan by MultiplyVentures and Jovian by Advay Choudhury and Abhishek Ghosh
+## Presented at GenAI Hackathon by MultiplyVentures and Jovian by Advay Choudhury and Abhishek Ghosh
  
 ## Welcome to Assisto
 
